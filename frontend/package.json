@@ -9,9 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.1.0"
+    "@chainlink/design-system": "^0.2.0",
+    "@rainbow-me/rainbowkit": "^0.12.4",
+    "alchemy-sdk": "^2.6.2",
+    "next": "13.1.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-dropdown-select": "^4.9.4",
+    "wagmi": "^0.12.6"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
