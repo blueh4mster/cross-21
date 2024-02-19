@@ -4,9 +4,13 @@ function Box() {
   return (
     <div
       style={{
-        height: "395px",
-        width: "395px",
-        backgroundColor: "#fff",
+        height: "115px",
+        width: "115px",
+        color : "white",
+        fontSize : "100px",
+        paddingLeft : "30px",
+        lineHeight:"20px",
+        backgroundColor: "#0a1a57",
         borderRadius: "10px",
         display: "grid",
         gridTemplateColumns: "120px 120px 120px",
@@ -14,18 +18,7 @@ function Box() {
         padding: "10px",
         alignItems: "center",
       }}
-    >
-      <div
-        style={{
-          textAlign: "center",
-          color: "white",
-          fontFamily: "fantasy",
-          marginTop: "20px",
-          fontSize: "70px",
-        }}
-      >
-        "1"
-      </div>
+    >0
     </div>
   );
 }
