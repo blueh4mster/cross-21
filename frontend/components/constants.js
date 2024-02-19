@@ -1,6 +1,6 @@
 //abi,  chainSelectorMap, supportedChainsList,chainidMap, getDestinationChainList
 
-export const abi = [
+export const abi = 
     [
         {
           "inputs": [],
@@ -820,22 +820,20 @@ export const abi = [
           "stateMutability": "pure",
           "type": "function"
         }
-      ]
-      
-]
+    ]
 export const contractAddress = {
     'mumbai' : "0xb7C06C14a23C0FD02Edf7AAB4EEf92A031e20D11",
-    'BSC Testnet':"0xA0B0004e2b7e582c3B8936d5A12bC23300de4ED7"
+    'bnb chain':"0xA0B0004e2b7e582c3B8936d5A12bC23300de4ED7"
 
 }
 
 export const chainSelectorMap = {
-    'BSC Testnet': "13264668187771770619",
+    'bnb chain': "13264668187771770619",
 	'mumbai': "12532609583862916517"
 }
 
 const supportedChainsList = [
-    { id: 97, name: 'BSC Testnet'},
+    { id: 97, name: 'bnb chain'},
     { id: 80001, name: 'mumbai' },
 ];
 

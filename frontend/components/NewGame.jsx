@@ -56,7 +56,7 @@ function NewGame() {
     try {
       if (sessionId) {
         const game21Contract = new Contract(
-          contractAddress[chainedMap[chain.id]],
+          contractAddress[chainidMap[chain.id]],
           abi,
           signer
         );
@@ -102,12 +102,14 @@ function NewGame() {
     );
     setText("Starting the Game");
     try {
+        console.log(destinationChain.label, chainSelectorMap[destinationChain.label]);
       const startGame = await game21Contract.start(
         chainSelectorMap[destinationChain.label],
         contractAddress[destinationChain.label]
       );
+      console.log(startGame);
       setTxHash(startGame.hash);
-      await startGame.wait();
+      await startGame.wait(1);
       setText(
         "Game Started, Waiting for the other player on " +
           destinationChain.label +

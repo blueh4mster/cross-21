@@ -65,7 +65,7 @@ export default function Home() {
 
   // UI state variables
   let [text, setText] = useState(""); // Stores text to display to user
-  const [disabledButton, setDisabledButton] = useState(true); // Boolean to disable button
+  const [disabledButton, setDisabledButton] = useState(false); // Boolean to disable button
   const [intervalId, setIntervalId] = useState(); // Stores the interval ID for setting and clearing intervals
 
   // move function
