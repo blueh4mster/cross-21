@@ -41,7 +41,7 @@ function NewGame() {
 
   const childToParent = (value) => {
     setDestinationChain(value[0]);
-    updateAvailableGameSessions();
+    //updateAvailableGameSessions();
   };
 
   const setSession = (value) => {
@@ -51,16 +51,15 @@ function NewGame() {
   // React.useEffect(() => {
   //     setBoardInterval()
   // }, [playerChar]);
-
+  console.log(signer);
   async function getBoxStatus() {
     try {
       if (sessionId) {
         const game21Contract = new Contract(
           contractAddress[chainidMap[chain.id]],
           abi,
-          signer
+          address
         );
-        // const BoxStatus = await game21Contract
       } else {
         return;
       }
@@ -102,12 +101,10 @@ function NewGame() {
     );
     setText("Starting the Game");
     try {
-        console.log(destinationChain.label, chainSelectorMap[destinationChain.label]);
       const startGame = await game21Contract.start(
         chainSelectorMap[destinationChain.label],
         contractAddress[destinationChain.label]
-      );
-      console.log(startGame);
+      )
       setTxHash(startGame.hash);
       await startGame.wait(1);
       setText(
@@ -118,8 +115,7 @@ function NewGame() {
       setSessionId("");
       setTxHash(null);
       setDisabledButton(false);
-      setPlayerChar("O");
-      setPlayerNumber(1);
+      setPlayerNumber("1");
       setBoardInterval();
       resetBoard();
     } catch (e) {
