@@ -3,14 +3,14 @@ import "@rainbow-me/rainbowkit/styles.css";
 
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createClient, useAccount, WagmiConfig } from "wagmi";
-import { bscTestnet, polygonMumbai} from "wagmi/chains";
+import { bscTestnet, polygonMumbai, sepolia} from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import MainLayout from "../layout/mainLayout";
 import { useRouter } from "next/router";
 
 const { chains, provider } = configureChains(
-  [polygonMumbai, bscTestnet],
+  [polygonMumbai, bscTestnet, sepolia],
   [alchemyProvider({ apiKey: process.env.ALCHEMY_API_KEY }), publicProvider()]
 );
 

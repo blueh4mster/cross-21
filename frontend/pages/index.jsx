@@ -98,14 +98,14 @@ export default function Home() {
   };
 
   function checkWin(numinbox) {
-    if (currNum == 21){
+    if (currNum == 21) {
       // setWinner()
       return currentPlayer;
     }
     return null;
   }
 
-  function inputNum(num){
+  function inputNum(num) {
     if (num - currNum > 6) {
       return;
     }
@@ -114,7 +114,7 @@ export default function Home() {
 
     const newBox = num;
     setCurrNum(num);
-    if (currentPlayer == "1"){
+    if (currentPlayer == "1") {
       setCurrentPlayer("2");
     } else {
       setCurrentPlayer("1");
@@ -123,14 +123,13 @@ export default function Home() {
   function refreshBox() {
     const newBox = currNum;
     let win = checkWin();
-    if (win){
-      if (playerNumber == win){
+    if (win) {
+      if (playerNumber == win) {
         setText("You Win!");
-      }else {
+      } else {
         setText("You lose!");
       }
     }
-
   }
 
   function resetBox() {
@@ -174,7 +173,7 @@ export default function Home() {
         >
           <Header />
           <NewGame />
-          <Box/>
+          <Box />
         </AppContext.Provider>
         <br />
         <br />

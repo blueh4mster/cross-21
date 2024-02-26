@@ -112,7 +112,6 @@ function NewGame() {
       setTxHash(null);
       setDisabledButton(false);
       setPlayerNumber("1");
-      setBoardInterval();
       resetBoard();
     } catch (e) {
       console.log(e);
@@ -144,7 +143,6 @@ function NewGame() {
 
   const join = async () => {
     setText("Joining");
-    setDisabledCell(false);
     setPlayerDetails();
     setText("Joined the game. Refreshing the box!");
   };
