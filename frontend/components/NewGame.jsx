@@ -41,7 +41,7 @@ function NewGame() {
 
   const childToParent = (value) => {
     setDestinationChain(value[0]);
-    //updateAvailableGameSessions();
+    updateAvailableGameSessions();
   };
 
   const setSession = (value) => {
@@ -51,7 +51,6 @@ function NewGame() {
   // React.useEffect(() => {
   //     setBoardInterval()
   // }, [playerChar]);
-  console.log(signer);
   async function getBoxStatus() {
     try {
       if (sessionId) {
@@ -75,15 +74,12 @@ function NewGame() {
         abi,
         signer
       );
-      let sessionIds = await destinationChainContract.getActiveSessions();
-      sessionIds = [...new Set(sessionIds)];
+      let sessionIdS = await destinationChainContract.getSessionId();
       let options = [];
-      for (let i = 0; i < sessionIds.length; i++) {
-        options.push({
-          label: sessionIds[i].slice(0, 8),
-          value: sessionIds[i],
-        });
-      }
+      options.push({
+        label: sessionIdS.slice(0, 8),
+        value: sessionIdS,
+      });
       setSessionIds(options);
       setDisabledButton(false);
     } catch (e) {
@@ -104,7 +100,7 @@ function NewGame() {
       const startGame = await game21Contract.start(
         chainSelectorMap[destinationChain.label],
         contractAddress[destinationChain.label]
-      )
+      );
       setTxHash(startGame.hash);
       await startGame.wait(1);
       setText(

@@ -6,10 +6,10 @@ function Box() {
       style={{
         height: "115px",
         width: "115px",
-        color : "white",
-        fontSize : "100px",
-        paddingLeft : "30px",
-        lineHeight:"20px",
+        color: "white",
+        fontSize: "100px",
+        paddingLeft: "30px",
+        lineHeight: "20px",
         backgroundColor: "#0a1a57",
         borderRadius: "10px",
         display: "grid",
@@ -18,7 +18,8 @@ function Box() {
         padding: "10px",
         alignItems: "center",
       }}
-    >0
+    >
+      0
     </div>
   );
 }
