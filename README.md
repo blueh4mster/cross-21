@@ -19,4 +19,4 @@ From a developer's perspective, each deployment constitutes an isolated and inde
 
 ## Control Flow
 
-![alt text](https://github.com/blueh4mster/cross-21/blob/master/assets/cross.jpeg?raw=true
+![Alt text](https://github.com/blueh4mster/cross-21/blob/master/assets/cross.jpeg?raw=true)
