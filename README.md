@@ -18,3 +18,5 @@ CCIP allows interoperability between Web3 games across multiple different blockc
 From a developer's perspective, each deployment constitutes an isolated and independent instance, resulting in the backend contracts being unconnected and unaware of each other. For example, a decentralized exchange (DEX) DApp may need to be deployed on Ethereum, BNB Chain, and Polygon networks individually. It leads to each version of the DApps being isolated.
 
 ## Control Flow
+
+![alt text](https://github.com/bluh4mster/cross-21/blob/master/assets/cross.jpeg?raw=true
