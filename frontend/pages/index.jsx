@@ -46,9 +46,9 @@ export default function Home() {
   }, []);
 
   //game state variables
-  const [currentPlayer, setCurrentPlayer] = useState("1"); // Stores the current player's character (X starts first)
-  const [currNum, setCurrNum] = useState(""); // Stores the current state of the number to be displayed to both users
-  const [winner, setWinner] = useState(""); // Stores the winner of the game
+  const [currentPlayer, setCurrentPlayer] = useState(1); // Stores the current player's character (X starts first)
+  const [currNum, setCurrNum] = useState(0); // Stores the current state of the number to be displayed to both users
+  const [winner, setWinner] = useState(); // Stores the winner of the game
   const [gameOver, setGameOver] = useState(false); // Boolean to signify if the game is over
   const [disabledCell, setDisabledCell] = useState(true); // Boolean to disable cells when game is over
 
@@ -58,7 +58,7 @@ export default function Home() {
   const [destinationChain, setDestinationChain] = useState(); // Stores the selected destination chain
 
   // Player state variables
-  const [playerNumber, setPlayerNumber] = useState(""); // Stores the number assigned to the player
+  const [playerNumber, setPlayerNumber] = useState(1); // Stores the number assigned to the player
 
   // Session state variables
   const [sessionId, setSessionId] = useState(); // Stores the current game session ID
@@ -90,39 +90,58 @@ export default function Home() {
         setText("Communicating your move cross chain");
         await move.wait();
         setText("Move Communicated, waiting for other player to make a move");
+        return true;
       } catch (e) {
         console.log(e);
-        return;
+        return false;
       }
     }
+    return false;
   };
 
-  function checkWin(numinbox) {
+  const checkWin = async () => {
     if (currNum == 21) {
       // setWinner()
       return currentPlayer;
     }
     return null;
-  }
+  };
 
-  function inputNum(num) {
+  const inputNum = async (num) => {
+    const game21Contract = new Contract(
+      contractAddress[chainidMap[chain.id]],
+      abi,
+      signer
+    );
+    let gameSession = await game21Contract.gameSessions(sessionId);
+    console.log(gameSession);
+    setPlayerNumber(currentPlayer);
+    console.log(playerNumber);
+    console.log(currentPlayer);
+    // if (playerNumber != currentPlayer) {
+    //   setText("not your turn dumbass!!!!");
+    //   return;
+    // }
     if (num - currNum > 6) {
       return;
     }
 
-    move(num);
-
-    const newBox = num;
-    setCurrNum(num);
-    if (currentPlayer == "1") {
-      setCurrentPlayer("2");
-    } else {
-      setCurrentPlayer("1");
+    let success = await move(num);
+    if (success) {
+      setCurrNum(num);
+      console.log(num);
+      if (currentPlayer == 1) {
+        setCurrentPlayer(2);
+      } else {
+        setCurrentPlayer(1);
+      }
+      console.log(currentPlayer);
     }
-  }
-  function refreshBox() {
-    const newBox = currNum;
+  };
+
+  const refreshBox = async () => {
     let win = checkWin();
+    console.log(win);
     if (win) {
       if (playerNumber == win) {
         setText("You Win!");
@@ -130,7 +149,7 @@ export default function Home() {
         setText("You lose!");
       }
     }
-  }
+  };
 
   function resetBox() {
     setCurrNum(0);
@@ -169,6 +188,8 @@ export default function Home() {
             resetBox,
             disabledButton,
             setDisabledButton,
+            move,
+            inputNum,
           }}
         >
           <Header />

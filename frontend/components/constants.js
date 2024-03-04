@@ -9,17 +9,6 @@ export const abi = [
         type: "address",
       },
     ],
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "router",
-        type: "address",
-      },
-    ],
     name: "InvalidRouter",
     type: "error",
   },
@@ -205,19 +194,6 @@ export const abi = [
   },
   {
     inputs: [],
-    name: "_router",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "acceptOwnership",
     outputs: [],
     stateMutability: "nonpayable",
@@ -273,6 +249,213 @@ export const abi = [
     name: "ccipReceive",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "sessionId",
+        type: "bytes32",
+      },
+      {
+        internalType: "uint64",
+        name: "destinationChainSelector",
+        type: "uint64",
+      },
+      {
+        internalType: "address",
+        name: "receiver",
+        type: "address",
+      },
+    ],
+    name: "join",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "player",
+        type: "uint256",
+      },
+      {
+        internalType: "bytes32",
+        name: "sessionId",
+        type: "bytes32",
+      },
+      {
+        internalType: "uint8",
+        name: "num",
+        type: "uint8",
+      },
+      {
+        internalType: "uint64",
+        name: "destinationChainSelector",
+        type: "uint64",
+      },
+      {
+        internalType: "address",
+        name: "receiver",
+        type: "address",
+      },
+    ],
+    name: "move",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint64",
+        name: "destinationChainSelector",
+        type: "uint64",
+      },
+      {
+        internalType: "address",
+        name: "receiver",
+        type: "address",
+      },
+      {
+        components: [
+          {
+            internalType: "bytes32",
+            name: "sessionId",
+            type: "bytes32",
+          },
+          {
+            internalType: "address",
+            name: "player_1",
+            type: "address",
+          },
+          {
+            internalType: "address",
+            name: "player_2",
+            type: "address",
+          },
+          {
+            internalType: "address",
+            name: "winner",
+            type: "address",
+          },
+          {
+            internalType: "address",
+            name: "turn",
+            type: "address",
+          },
+          {
+            internalType: "uint8",
+            name: "player1Status",
+            type: "uint8",
+          },
+          {
+            internalType: "uint8",
+            name: "player2Status",
+            type: "uint8",
+          },
+        ],
+        internalType: "struct game21.GameSession",
+        name: "message",
+        type: "tuple",
+      },
+    ],
+    name: "sendMessage",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "messageId",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint64",
+        name: "destinationChainSelector",
+        type: "uint64",
+      },
+      {
+        internalType: "address",
+        name: "receiver",
+        type: "address",
+      },
+    ],
+    name: "start",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+    ],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "router",
+        type: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "routerAddr",
+        type: "address",
+      },
+    ],
+    name: "updateRouter",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_address",
+        type: "address",
+      },
+    ],
+    name: "withdraw",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    stateMutability: "payable",
+    type: "receive",
+  },
+  {
+    inputs: [],
+    name: "_router",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -590,39 +773,6 @@ export const abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "player",
-        type: "uint256",
-      },
-      {
-        internalType: "bytes32",
-        name: "sessionId",
-        type: "bytes32",
-      },
-      {
-        internalType: "uint8",
-        name: "num",
-        type: "uint8",
-      },
-      {
-        internalType: "uint64",
-        name: "destinationChainSelector",
-        type: "uint64",
-      },
-      {
-        internalType: "address",
-        name: "receiver",
-        type: "address",
-      },
-    ],
-    name: "move",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "owner",
     outputs: [
@@ -657,72 +807,6 @@ export const abi = [
   {
     inputs: [
       {
-        internalType: "uint64",
-        name: "destinationChainSelector",
-        type: "uint64",
-      },
-      {
-        internalType: "address",
-        name: "receiver",
-        type: "address",
-      },
-      {
-        components: [
-          {
-            internalType: "bytes32",
-            name: "sessionId",
-            type: "bytes32",
-          },
-          {
-            internalType: "address",
-            name: "player_1",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "player_2",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "winner",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "turn",
-            type: "address",
-          },
-          {
-            internalType: "uint8",
-            name: "player1Status",
-            type: "uint8",
-          },
-          {
-            internalType: "uint8",
-            name: "player2Status",
-            type: "uint8",
-          },
-        ],
-        internalType: "struct game21.GameSession",
-        name: "message",
-        type: "tuple",
-      },
-    ],
-    name: "sendMessage",
-    outputs: [
-      {
-        internalType: "bytes32",
-        name: "messageId",
-        type: "bytes32",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
         internalType: "uint256",
         name: "",
         type: "uint256",
@@ -737,24 +821,6 @@ export const abi = [
       },
     ],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint64",
-        name: "destinationChainSelector",
-        type: "uint64",
-      },
-      {
-        internalType: "address",
-        name: "receiver",
-        type: "address",
-      },
-    ],
-    name: "start",
-    outputs: [],
-    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -776,54 +842,11 @@ export const abi = [
     stateMutability: "pure",
     type: "function",
   },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "to",
-        type: "address",
-      },
-    ],
-    name: "transferOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "routerAddr",
-        type: "address",
-      },
-    ],
-    name: "updateRouter",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_address",
-        type: "address",
-      },
-    ],
-    name: "withdraw",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    stateMutability: "payable",
-    type: "receive",
-  },
 ];
 export const contractAddress = {
-  sepolia: "0x970aE677d5b44FBe3448af9F860e0dF56A291b35",
-  mumbai: "0x31446338C0665986dec0D3D58b70a5e53164Cded",
-  "bnb chain": "0xd8439e1583BF2fC6bC988f09Baf8816447d78C09",
+  sepolia: "0x419582b019aAED343C9c40530eEb25775be148Ba",
+  mumbai: "0x6C576De1886d20ccD39b8a370f745c1174Cd4Db8",
+  "bnb chain": "0x757c06DF561c57650891Ab627A46f26E4e3781d8",
 };
 
 export const chainSelectorMap = {

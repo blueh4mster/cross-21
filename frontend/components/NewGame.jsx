@@ -111,8 +111,8 @@ function NewGame() {
       setSessionId("");
       setTxHash(null);
       setDisabledButton(false);
-      setPlayerNumber("1");
-      resetBoard();
+      setPlayerNumber(1);
+      setCurrNum(0);
     } catch (e) {
       console.log(e);
       return;
@@ -126,10 +126,11 @@ function NewGame() {
       signer
     );
     let gameSession = await game21Contract.gameSessions(sessionId);
+    console.log(gameSession);
     let zero_address = "0x0000000000000000000000000000000000000000";
 
     if (address == gameSession["player_1"]) {
-      setPlayerNumber("1");
+      setPlayerNumber(1);
       if (gameSession["player_2"] == zero_address) {
         setText("Rejoined as Player 1");
       }
@@ -137,14 +138,38 @@ function NewGame() {
       address == gameSession["player_2"] ||
       gameSession["player_2"] == zero_address
     ) {
-      setPlayerNumber("2");
+      setPlayerNumber(2);
     }
   };
 
   const join = async () => {
     setText("Joining");
-    setPlayerDetails();
+    // setDisabledButton(true);
+    // const game21Contract = new Contract(
+    //   contractAddress[chainidMap[chain.id]],
+    //   abi,
+    //   signer
+    // );
+    // console.log(sessionId);
+    // try {
+    //   const joinGame = await game21Contract.join(
+    //     sessionId,
+    //     chainSelectorMap[destinationChain.label],
+    //     contractAddress[destinationChain.label]
+    //   );
+    //   setTxHash(joinGame.hash);
+    //   await joinGame.wait(1);
+    //   setText("joined on backend");
+    //   setTxHash(null);
+    //   setDisabledButton(false);
+    //   setPlayerNumber(2);
+    // } catch (e) {
+    //   console.log(e);
+    //   return;
+    // }
+    await setPlayerDetails();
     setText("Joined the game. Refreshing the box!");
+    // setCurrNum(0);
   };
 
   return (
